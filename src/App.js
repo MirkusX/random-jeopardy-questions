@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Frontpage } from "./Pages/Frontpage";
 import { useEffect, useState } from "react";
+import { DataContext } from "./Components/useContext";
 
 function App() {
   const [data, setData] = useState();
@@ -23,9 +24,11 @@ function App() {
   }, []);
   if (data) {
     return (
-      <div className="App">
-        <Frontpage />
-      </div>
+      <DataContext.Provider value={{ data, setData }}>
+        <div className="App">
+          <Frontpage />
+        </div>
+      </DataContext.Provider>
     );
   }
 }
