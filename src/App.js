@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import axios from "axios";
 import "./App.css";
 import { Frontpage } from "./Pages/Frontpage";
 import { useEffect, useState } from "react";
@@ -9,9 +9,7 @@ function App() {
   const [error, setError] = useState();
   const getData = () => {
     axios
-      .get(
-        "git remote add origin https://github.com/MirkusX/random-jeopardy-questions.git"
-      )
+      .get("https://jservice.io/api/random")
       .then((response) => {
         setData(response.data);
       })
