@@ -12,6 +12,9 @@ export const Frontpage = () => {
     data.map((item, index) => {
       if (state.answer.toUpperCase() === item.answer.toUpperCase()) {
         console.log("correct");
+      } else if (state.lives === 0) {
+        alert("You are out of lives");
+        return;
       } else {
         dispatch({ type: "lives", payload: 1 });
       }
