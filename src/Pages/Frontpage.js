@@ -21,13 +21,21 @@ export const Frontpage = () => {
       }
     });
   };
+  const buy = () => {
+    if (state.money >= 1000) {
+      dispatch({ type: "livesIncrease", payload: 1 });
+      dispatch({ type: "moneyDecrease", payload: 1000 });
+    } else {
+      alert("You do not have enough money");
+      return;
+    }
+  };
 
   return (
     <section>
       {data.map((item, index) => {
-        console.log(item.answer);
         return (
-          <div>
+          <div key={index}>
             <h2>{item.question}</h2>
             <p>Value: {item.value}</p>
             <p>Lives: {state.lives}</p>
@@ -41,6 +49,7 @@ export const Frontpage = () => {
               />
               <input type="submit" hidden />
             </form>
+            <button onClick={() => buy()}>Buy more lives: 1000</button>
           </div>
         );
       })}

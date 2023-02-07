@@ -15,5 +15,9 @@ export const reducer = (state, action) => {
       return { ...state, correct: state.correct + action.payload };
     case "money":
       return { ...state, money: state.money + action.payload };
+    case "livesIncrease":
+      return { ...state, lives: state.lives + action.payload };
+    case "moneyDecrease":
+      return { ...state, money: state.money - action.payload };
   }
 };
