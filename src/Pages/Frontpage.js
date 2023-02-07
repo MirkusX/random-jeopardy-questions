@@ -1,4 +1,4 @@
-import { useContext, useReducer, useRef, useState } from "react";
+import { useContext, useReducer, useRef } from "react";
 import { DataContext } from "../Components/useContext";
 import { initialState, reducer } from "../Components/useReducer";
 
@@ -11,7 +11,8 @@ export const Frontpage = () => {
     form.current.reset();
     data.map((item, index) => {
       if (state.answer.toUpperCase() === item.answer.toUpperCase()) {
-        console.log("correct");
+        dispatch({ type: "correct", payload: 1 });
+        dispatch({ type: "money", payload: Number(item.value) / 2 });
       } else if (state.lives === 0) {
         alert("You are out of lives");
         return;
@@ -23,9 +24,6 @@ export const Frontpage = () => {
 
   return (
     <section>
-      <div>
-        <h1>Frontpage</h1>
-      </div>
       {data.map((item, index) => {
         console.log(item.answer);
         return (
@@ -33,11 +31,11 @@ export const Frontpage = () => {
             <h2>{item.question}</h2>
             <p>Value: {item.value}</p>
             <p>Lives: {state.lives}</p>
+            <p>Money: {state.money}</p>
             <form ref={form} onSubmit={submitAnswer}>
               <input
                 type="text"
                 onInput={(e) =>
-                  //   setAnswer((answer) => (answer = e.target.value))
                   dispatch({ type: "answer", payload: e.target.value })
                 }
               />
