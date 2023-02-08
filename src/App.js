@@ -2,9 +2,10 @@ import axios from "axios";
 import "./App.css";
 import { Frontpage } from "./Pages/Frontpage";
 import { useEffect, useState } from "react";
-import { DataContext } from "./Components/useContext";
+import { DataContext, UpdateContext } from "./Components/useContext";
 
 function App() {
+  const [update, setUpdate] = useState(false);
   const [data, setData] = useState();
   const [error, setError] = useState();
   const getData = () => {
@@ -19,14 +20,16 @@ function App() {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [update]);
   if (data) {
     return (
-      <DataContext.Provider value={{ data, setData }}>
-        <div className="App">
-          <Frontpage />
-        </div>
-      </DataContext.Provider>
+      <UpdateContext.Provider value={{ update, setUpdate }}>
+        <DataContext.Provider value={{ data, setData }}>
+          <div className="App">
+            <Frontpage />
+          </div>
+        </DataContext.Provider>
+      </UpdateContext.Provider>
     );
   }
 }
