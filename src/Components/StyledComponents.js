@@ -10,6 +10,9 @@ export const FlexDiv = styled.div`
   margin: 0 auto;
   padding: 1em;
   border-radius: 0 0 5px 5px;
+  @media (max-width: 811px) {
+    width: 90%;
+  }
   ${(props) => {
     if (props.stats)
       return `
@@ -22,11 +25,16 @@ export const StyledQuestionDiv = styled.div`
   width: 50%;
   background-color: #cbbf7a;
   border-radius: 5px;
+  @media (max-width: 811px) {
+    width: 100%;
+  }
 `;
 
 export const StyledButton = styled.button`
   border: none;
   background-color: #f4e87c;
+  padding: 1em;
+  border-radius: 5px;
 `;
 
 export const StyledInput = styled.input`
