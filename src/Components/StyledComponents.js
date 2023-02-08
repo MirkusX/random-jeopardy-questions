@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//stylings
 export const FlexDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -25,6 +26,7 @@ export const StyledQuestionDiv = styled.div`
   width: 50%;
   background-color: #cbbf7a;
   border-radius: 5px;
+  padding: 1em;
   @media (max-width: 811px) {
     width: 100%;
   }

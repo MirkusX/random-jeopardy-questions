@@ -1,10 +1,11 @@
+//initial state for states used in reducer
 export const initialState = {
   answer: "",
   lives: 5,
   correct: 0,
   money: 0,
 };
-
+//reducer function
 export const reducer = (state, action) => {
   switch (action.type) {
     case "answer":

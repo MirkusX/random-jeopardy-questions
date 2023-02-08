@@ -5,9 +5,13 @@ import { useEffect, useState } from "react";
 import { DataContext, UpdateContext } from "./Components/useContext";
 
 function App() {
+  //state for getting new question
   const [update, setUpdate] = useState(false);
+  //state for api data
   const [data, setData] = useState();
+  //state for errors
   const [error, setError] = useState();
+  //function for api call
   const getData = () => {
     axios
       .get("https://jservice.io/api/random")
@@ -18,6 +22,7 @@ function App() {
         setError(response);
       });
   };
+  //useeffect for running getData function
   useEffect(() => {
     getData();
   }, [update]);
